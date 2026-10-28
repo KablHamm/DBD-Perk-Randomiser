@@ -244,22 +244,38 @@
     </div>
   </div>
 </div>
-<div class="footer">v1.6.0 &middot; Perk data sourced from the Dead by Daylight Wiki. Not affiliated with Behaviour Interactive.</div>
+<div class="footer">v1.8.0 &middot; Perk data sourced from the Dead by Daylight Wiki. Not affiliated with Behaviour Interactive.</div>
 <div class="toast" id="toast"></div>
 
 <script>
-const APP_VERSION = '1.6.0';
+const APP_VERSION = '1.8.0';
 function mergeIdentical(list) {
+  const byName = {};
+  (list || []).forEach(p => { byName[p.name] = p; });
+  function canonical(p) {
+    const m = (p.desc || '').match(/Identical to (.+?)\s*\./);
+    if (m) {
+      const target = m[1].trim();
+      if (byName[target]) return 'identical:' + target;
+    }
+    // if this perk is the target of another identical perk, group under itself
+    for (const o of (list || [])) {
+      const m2 = (o.desc || '').match(/Identical to (.+?)\s*\./);
+      if (m2 && m2[1].trim() === p.name) return 'identical:' + p.name;
+    }
+    return 'desc:' + (p.desc || '').trim().toLowerCase();
+  }
   const groups = {};
   (list || []).forEach(p => {
-    const key = ((p.desc || '') + '').trim().toLowerCase();
+    const key = canonical(p);
     if (!groups[key]) groups[key] = [];
     groups[key].push(p);
   });
   return Object.keys(groups).map(k => {
     const g = groups[k];
     if (g.length === 1) return g[0];
-    return { name: g.map(x => x.name).join(' / '), icon: g[0].icon, desc: g[0].desc };
+    const real = g.find(x => !(x.desc || '').startsWith('Identical to')) || g[0];
+    return { name: g.map(x => x.name).join(' / '), icon: real.icon || g[0].icon, desc: real.desc || '' };
   });
 }
 
