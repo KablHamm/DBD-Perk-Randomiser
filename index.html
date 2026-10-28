@@ -163,7 +163,8 @@
   .dev-panel input[type=color] { width: 48px; height: 32px; border: none; background: none; cursor: pointer; }
   .dev-panel input[type=number] { width: 80px; }
 
-  .topbar { position: relative; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .topbar { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .topbar .logo-btn { position: absolute; left: 0; }
   .topbar .tabs { margin: 0; }
   .logo-btn { background: #000; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; padding: 6px 8px; display: flex; align-items: center; }
   .logo-btn img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 0 6px rgba(198,40,40,0.6)); }
@@ -329,6 +330,7 @@ document.querySelectorAll('.tab').forEach(btn => {
 document.getElementById('roll').addEventListener('click', roll);
 document.getElementById('listBtn').addEventListener('click', () => {
   const panel = document.getElementById('allPerks');
+  document.getElementById('devPanel').style.display = 'none';
   if (panel.style.display === 'none') {
     const p = pool();
     panel.innerHTML = `<h3>${role} perks (${p.length})</h3><div class="grid">${p.map((pk, idx) =>
@@ -339,6 +341,7 @@ document.getElementById('listBtn').addEventListener('click', () => {
       el.addEventListener('click', () => showModal(p[idx]));
     });
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('menu').style.display = 'none';
   } else {
     panel.style.display = 'none';
   }
@@ -346,6 +349,7 @@ document.getElementById('listBtn').addEventListener('click', () => {
 
 document.getElementById('importBtn').addEventListener('click', () => {
   document.getElementById('fileInput').click();
+  document.getElementById('menu').style.display = 'none';
 });
 document.getElementById('fileInput').addEventListener('change', (e) => {
   const file = e.target.files[0];
@@ -398,8 +402,10 @@ function applySettings() {
 function saveSettings() { localStorage.setItem('dbd_settings', JSON.stringify(SETTINGS)); }
 
 document.getElementById('devBtn').addEventListener('click', () => {
+  document.getElementById('allPerks').style.display = 'none';
   document.getElementById('devPanel').style.display = 'flex';
   applySettings();
+  document.getElementById('menu').style.display = 'none';
 });
 document.getElementById('closeDev').addEventListener('click', () => {
   document.getElementById('devPanel').style.display = 'none';
