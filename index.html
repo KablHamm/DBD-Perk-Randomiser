@@ -163,9 +163,10 @@
   .dev-panel input[type=color] { width: 48px; height: 32px; border: none; background: none; cursor: pointer; }
   .dev-panel input[type=number] { width: 80px; }
 
-  .topbar { position: relative; display: flex; align-items: center; margin-bottom: 12px; }
+  .topbar { position: relative; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .topbar .tabs { margin: 0; }
   .logo-btn { background: #000; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; padding: 6px 8px; display: flex; align-items: center; }
-  .logo-btn img { width: 24px; height: 24px; object-fit: contain; filter: drop-shadow(0 0 6px rgba(198,40,40,0.6)); }
+  .logo-btn img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 0 6px rgba(198,40,40,0.6)); }
   .logo-btn:hover { border-color: var(--accent); }
   .logo-btn:hover img { transform: scale(1.08); }
   .menu {
@@ -183,15 +184,15 @@
 <div class="container">
   <div class="topbar">
     <button id="menuBtn" class="logo-btn" aria-label="Menu"><img src="dbd-logo.png" alt="Menu"></button>
+    <div class="tabs">
+      <button class="tab active" data-role="killer">Killer</button>
+      <button class="tab" data-role="survivor">Survivor</button>
+    </div>
     <div id="menu" class="menu" style="display:none;">
       <button class="menu-item" id="listBtn">All Perks</button>
       <button class="menu-item" id="importBtn">Import Perks</button>
       <button class="menu-item" id="devBtn">Dev</button>
     </div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" data-role="killer">Killer</button>
-    <button class="tab" data-role="survivor">Survivor</button>
   </div>
   <div class="controls">
     <div class="options">
