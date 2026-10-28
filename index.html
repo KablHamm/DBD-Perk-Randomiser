@@ -154,10 +154,7 @@
 </style>
 </head>
 <body>
-<header>
-  <h1>Dead by Daylight Perk Randomiser</h1>
-  <p>Roll a random perk build for Killer or Survivor</p>
-</header>
+<link rel="icon" type="image/png" href="dbd-logo.png">
 <div class="container">
   <div class="tabs">
     <button class="tab active" data-role="killer">Killer</button>
@@ -168,10 +165,8 @@
       <label>Perks: <input type="number" id="count" min="1" max="4" value="4"></label>
     </div>
     <button class="btn" id="roll">Randomise</button>
-    <button class="btn secondary" id="copy">Copy build</button>
     <button class="btn secondary" id="listBtn">All Perks</button>
     <button class="btn secondary" id="importBtn">Import Perks</button>
-    <button class="btn secondary" id="exportBtn">Export Perks</button>
     <input type="file" id="fileInput" accept="application/json" style="display:none;">
   </div>
   <div id="stats" style="text-align:center;color:var(--muted);margin-bottom:12px;font-size:0.9rem;">
@@ -285,12 +280,6 @@ document.querySelectorAll('.tab').forEach(btn => {
 });
 
 document.getElementById('roll').addEventListener('click', roll);
-document.getElementById('copy').addEventListener('click', () => {
-  if (!lastRoll.length) { toast('Roll first!'); return; }
-  const text = lastRoll.map(p => p.name).join(' | ');
-  navigator.clipboard.writeText(text).then(() => toast('Copied!')).catch(() => toast('Copy failed'));
-});
-
 document.getElementById('listBtn').addEventListener('click', () => {
   const panel = document.getElementById('allPerks');
   if (panel.style.display === 'none') {
@@ -333,20 +322,6 @@ document.getElementById('fileInput').addEventListener('change', (e) => {
   reader.readAsText(file);
   e.target.value = '';
 });
-document.getElementById('exportBtn').addEventListener('click', () => {
-  const data = { killer: KILLER_PERKS, survivor: SURVIVOR_PERKS };
-  const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'dbd-perks.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  toast('Exported!');
-});
-
 document.getElementById('modalClose').addEventListener('click', hideModal);
 document.getElementById('modal').addEventListener('click', (e) => {
   if (e.target.id === 'modal') hideModal();
