@@ -167,6 +167,14 @@
 <body>
 <link rel="icon" type="image/png" href="dbd-logo.png">
 <div class="container">
+  <div class="topbar">
+    <button id="menuBtn" class="logo-btn" aria-label="Menu"><img src="dbd-logo.png" alt="Menu"></button>
+    <div id="menu" class="menu" style="display:none;">
+      <button class="menu-item" id="listBtn">All Perks</button>
+      <button class="menu-item" id="importBtn">Import Perks</button>
+      <button class="menu-item" id="devBtn">Dev</button>
+    </div>
+  </div>
   <div class="tabs">
     <button class="tab active" data-role="killer">Killer</button>
     <button class="tab" data-role="survivor">Survivor</button>
@@ -176,9 +184,6 @@
       <label>Perks: <input type="number" id="count" min="1" max="4" value="4"></label>
     </div>
     <button class="btn" id="roll">Randomise</button>
-    <button class="btn secondary" id="listBtn">All Perks</button>
-    <button class="btn secondary" id="importBtn">Import Perks</button>
-    <button class="btn secondary" id="devBtn">Dev</button>
     <input type="file" id="fileInput" accept="application/json" style="display:none;">
   </div>
   <div id="stats" style="text-align:center;color:var(--muted);margin-bottom:12px;font-size:0.9rem;">
@@ -410,6 +415,17 @@ document.getElementById('setDim2').addEventListener('input', (e) => {
 // apply on load
 applySettings();
 
+
+
+document.getElementById('menuBtn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  const m = document.getElementById('menu');
+  m.style.display = m.style.display === 'none' ? 'flex' : 'none';
+});
+document.addEventListener('click', (e) => {
+  const m = document.getElementById('menu');
+  if (m && !m.contains(e.target) && e.target.id !== 'menuBtn') m.style.display = 'none';
+});
 
 document.getElementById('modalClose').addEventListener('click', hideModal);
 document.getElementById('modal').addEventListener('click', (e) => {
