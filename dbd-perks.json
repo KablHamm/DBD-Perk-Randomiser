@@ -206,6 +206,11 @@
       "desc": "\"You will kill anyone who gets between you and your target.\" When you hook any Survivors that is not the Obsession , the following effects apply to the Obsession : Their Aura is revealed for 6 / 8 / 10 seconds . They suffer from the Exposed Status Effect for 20 seconds . When you hook the Obsession , the following effects apply to a random Survivor: Causes the Survivor to scream and reveal their location to the Killer. They become the new Obsession . You can only be obsessed with one Survivor at a time. \"I got some fresh meat lined up, and I'm not gonna let you spoil it, not this time!\" — Chucky"
     },
     {
+      "name": "Funny Business",
+      "icon": "https://deadbydaylight.wiki.gg/images/thumb/T_UI_iconsPerks_FunnyBusiness.png/96px-T_UI_iconsPerks_FunnyBusiness.png?1cae32",
+      "desc": "Damaging a Generator grants +10 % Haste Status Effect for 10 seconds and triggers one random effect: Retain the Haste effect for 5 seconds longer. Get stunned for 2 seconds . Block the Generator for 30 seconds . The Generator spews out confetti! But nothing actually happens. The same effect cannot happen twice in a row This perk then goes on a 60 / 50 / 40 seconds cool-down. \"Glass, insects, and razor blades—there's no telling what you might find.\" — Clown Cafe Announcer"
+    },
+    {
       "name": "Furtive Chase",
       "icon": "https://deadbydaylight.wiki.gg/images/thumb/IconPerks_furtiveChase.png/96px-IconPerks_furtiveChase.png?66f458",
       "desc": "\"You lurk in the shadows, eliminating your victims one by one.\" After hooking the Obsession , you benefit from the following effects for 14 / 16 / 18 seconds : Grants the Undetectable Status Effect . Grants a +10 % Haste Status Effect . Whenever the Obsession is unhooked by another Survivor, the Obsession Status transfers to their Rescuer. You can only be obsessed with one Survivor at a time. \"You have no idea what I have planned for you. It'll be in the news for weeks. I'll make sure of that.\" — The Ghost Face"
@@ -396,6 +401,11 @@
       "desc": "Damaging any Survivor other than the Obsession with a Basic Attack causes Keep Them Waiting to gain +1 Token , up to a maximum of 6 / 7 / 8 Tokens . Damaging the Obsession with either a Basic or Special Attack causes Keep Them Waiting to lose -2 Tokens : Grants a stack-able -5 % per Token Cool-down time reduction on successful Basic Attacks , up to a maximum of 30 / 35 / 40 % . Keep Them Waiting freezes its current Token Count once the Obsession is sacrificed or killed. You can only be obsessed with one Survivor at a time."
     },
     {
+      "name": "Kill Spree",
+      "icon": "https://deadbydaylight.wiki.gg/images/thumb/T_UI_iconsPerks_KillSpree.png/96px-T_UI_iconsPerks_KillSpree.png?e91831",
+      "desc": "When all Survivors have reached the second Hook Stage and all Generators have been completed, you can kill Survivors. While Killing a Survivor, Exit Gate Switches are blocked by The Entity and for 6 / 8 / 10 seconds after. \"He’s killing them, one by one by one like cows.\" — Cat Lady"
+    },
+    {
       "name": "Knock Out",
       "icon": "https://deadbydaylight.wiki.gg/images/thumb/IconPerks_knockOut.png/96px-IconPerks_knockOut.png?3e922e",
       "desc": "\"The trauma caused by your brutal attacks makes crying for help painfully difficult.\" Whenever a Survivor moves farther than 10 metres from a Pallet within 6 seconds of dropping it and without the Pallet being destroyed, Knock Out triggers its effect: Causes them to suffer from a -20 % Hindered Status Effect for 2 / 3 / 4 seconds . \"Oh, that gun's no good. The old way... with a sledge! You see, that way's better. They die better that way.\" — Nubbins Sawyer"
@@ -404,6 +414,11 @@
       "name": "Languid Touch",
       "icon": "https://deadbydaylight.wiki.gg/images/thumb/IconPerks_languidTouch.png/96px-IconPerks_languidTouch.png?c15e67",
       "desc": "\"Your dreadful aura is so suffocating that even terrifying scenes tire your prey.\" When a Survivor scares off a Crow within 36 metres of your location, Languid Touch activates: Causes that Survivor to suffer from the Exhausted Status Effect for 6 / 8 / 10 seconds . Languid Touch has a cool-down of 5 seconds . \"Submit to me. It is inevitable.\" — Vecna"
+    },
+    {
+      "name": "Laughingstock",
+      "icon": "https://deadbydaylight.wiki.gg/images/thumb/T_UI_iconsPerks_Laughingstock.png/96px-T_UI_iconsPerks_Laughingstock.png?7d6fcf",
+      "desc": "Survivors within 12 metres of a completed Generator suffer from: Exhausted and Oblivious Status Effects These effects linger for 3 / 4 / 5 seconds after leaving the range. You also see auras of completed Generators . \"Are you fucking kidding me? No, you’re not fine, you are so completely far from fine right now.\" — Brooke"
     },
     {
       "name": "Lay Waste",
@@ -796,6 +811,11 @@
       "name": "Bardic Inspiration",
       "icon": "https://deadbydaylight.wiki.gg/images/thumb/IconPerks_bardicInspiration.png/96px-IconPerks_bardicInspiration.png?bae2a8",
       "desc": "It's time to give your audience a show. Will you bring the house down or will you choke? Press the Active Ability button while standing and motionless to enter the Performance interaction that lasts up to 15 seconds and empowers other Survivors within 16 metres of your location. The empowering effect depends on the result of you rolling a d20 and lasts for 90 seconds after completing the Performance : 1 : You scream, but without notifying the Killer. 2 - 10 : Skill Checks grant +1 % Progression. 11 - 19 : Skill Checks grant +2 % Progression. 20 : Skill Checks grant +3 % Progression. Bardic Inspiration has a cool-down of 110 / 100 / 90 seconds after completing the Performance or cancelling it. \"Listen closely! I'm about to save your life!\" — Aestri"
+    },
+    {
+      "name": "Best Gift Ever",
+      "icon": "https://deadbydaylight.wiki.gg/images/thumb/T_UI_iconsPerks_BestGiftEver.png/96px-T_UI_iconsPerks_BestGiftEver.png?dcd771",
+      "desc": "Best Gift Ever starts the Trial with 4 / 5 / 6 Tokens : The first time you drop an Item of each type, spend 1 Token to cause the dropped to be consumed by The Entity and benefit from an effect based on the Item: Flashlights : stunning the Killer causes them to be blinded for 2 seconds . Fog Vials : fast-vaulting causes your Scratch Marks to disappear +50 % faster for 5 seconds . Keys : you can rummage each Chest once. Maps : you see auras that last for a duration for +1 second longer. Med-Kits : healing a Survivor causes you to gain healing progress at 25 % speed. Toolboxes : you see auras of the 3 closest Generators . \"If a demon enters this world in the flesh, a counterpoint must be appointed to stop it from becoming too powerful.\" — Jonathan Shaw"
     },
     {
       "name": "Better Together",
@@ -1428,6 +1448,11 @@
       "desc": "\"Life is unforgiving. The more confirmation you get of that, the more prepared you become.\" Whenever another Survivor is hooked, Self-Preservation triggers its effect: Grants the Elusive Status Effect for 13 / 14 / 15 seconds \"Something I learnt in the industry: when the axe is swinging, keep your head down.\" — Yun-Jin Lee"
     },
     {
+      "name": "Shared Trauma",
+      "icon": "https://deadbydaylight.wiki.gg/images/thumb/T_UI_iconsPerks_SharedTrauma.png/96px-T_UI_iconsPerks_SharedTrauma.png?fe92e2",
+      "desc": "Taking a protection hit causes all Survivors within 12 metres to recover from Exhausted while running for 30 / 35 / 40 seconds . You also see auras of Survivors suffering from Exhausted within 32 metres . \"What? I like her scars. I think they're cool.\" — Gabbie Shaw"
+    },
+    {
       "name": "Shoulder the Burden",
       "icon": "https://deadbydaylight.wiki.gg/images/thumb/IconPerks_shoulderTheBurden.png/96px-IconPerks_shoulderTheBurden.png?586691",
       "desc": "\"Born to be a disciple. Ready to submit to a greater cause. This is your calling.\" Once per Trial, and while you are not on Death Hook , press the Active Ability button while standing in front of a Hooked Survivor to unhook them and trigger the following effects: Trade 1 Hook Stage with the other Survivor to their benefit. Causes you to scream, become injured if healthy and suffer from the Broken Status Effect for 160 / 140 / 120 seconds . \"It's not your time yet. Now go on!\" — Taurie Cain"
@@ -1558,6 +1583,11 @@
       "desc": "\"Years of evading the cops taught you a thing or two about stealth.\" You benefit from the following permanent effect: Increases your Movement speed while crouched by 90 / 95 / 100 % . \"The paint is still fresh but I am long gone.\" — Nea Karlsson"
     },
     {
+      "name": "Valkyrie's Rage",
+      "icon": "https://deadbydaylight.wiki.gg/images/thumb/T_UI_iconsPerks_ValkyriesRage.png/96px-T_UI_iconsPerks_ValkyriesRage.png?22165a",
+      "desc": "Valkyrie's Rage activates after being chased for 40 / 35 / 30 seconds : The next time you Pallet -stun the Killer, they are stunned for +75 % longer. Valkyrie's Rage then deactivates. \"I hope that hurt, fucker!\" — Sienna Shaw"
+    },
+    {
       "name": "Vigil",
       "icon": "https://deadbydaylight.wiki.gg/images/thumb/IconPerks_vigil.png/96px-IconPerks_vigil.png?3fe709",
       "desc": "\"You watch over your friends, even in dire situations.\" You recover 20 / 25 / 30 % faster from the following: The Exhausted Status Effect . Vigil extends its effect to all Survivors within 16 metres of your location and lingers for 15 seconds after leaving its Area of Effect . Survivors can only be affected by one instance of Vigil at a time. \"I am gonna be here when you wake up. You are gonna make it.\" — Quentin Smith"
@@ -1607,5 +1637,6 @@
       "icon": "https://deadbydaylight.wiki.gg/images/thumb/IconPerks_wiretap.png/96px-IconPerks_wiretap.png?a90034",
       "desc": "\"You know that the best way to stay one step ahead is to keep tabs on the competition.\" After repairing a Generator for the equivalent of 40 % of Progression, Wiretap activates. While active, press the Active Ability button while standing next to a Generator to install a listening device to it with a countdown of 100 / 110 / 120 seconds : Reveals the Aura of the Killer coming within 14 metres of the Bugged Generator to all Survivors. The listening device is deactivated after its countdown has elapsed or the Bugged Generator is damaged. The Auras of Bugged Generators are revealed to all Survivors in yellow ."
     }
-  ]
+  ],
+  "version": "2026-10-29"
 }
