@@ -388,7 +388,7 @@ document.getElementById('listBtn').addEventListener('click', () => {
         </select>
       </div>
       <div class="grid" id="perkGrid">${p.map((pk, idx) =>
-        `<div class="item" data-idx="${idx}" data-name="${pk.name.toLowerCase()}" data-char="${(pk.character||\"All\").toLowerCase()}"><img src="${pk.icon}" alt="${pk.name}" onerror="this.style.opacity=0.3"><span>${pk.name}</span></div>`
+        `<div class="item" data-idx="${idx}" data-name="${pk.name.toLowerCase()}" data-char="${pk.character || 'All'}"><img src="${pk.icon}" alt="${pk.name}" onerror="this.style.opacity=0.3"><span>${pk.name}</span></div>`
       ).join('')}</div>`;
     panel.style.display = 'block';
     panel.querySelectorAll('.item').forEach((el, idx) => {
@@ -409,7 +409,7 @@ document.getElementById('listBtn').addEventListener('click', () => {
       const cf = charFilter.value;
       panel.querySelectorAll('.item').forEach(el => {
         const nameOk = el.dataset.name.includes(q);
-        const charOk = !cf || el.dataset.char === cf;
+        const charOk = !cf || (el.dataset.char || '').toLowerCase() === cf;
         el.style.display = (nameOk && charOk) ? '' : 'none';
       });
     }
