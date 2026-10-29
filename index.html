@@ -291,7 +291,11 @@ let SURVIVOR_PERKS = (localStorage.getItem('dbd_survivor_perks') ? mergeIdentica
 let role = 'killer';
 let lastRoll = [];
 
-function pool() { return role === 'killer' ? KILLER_PERKS : SURVIVOR_PERKS; }
+function pool() {
+  const today = new Date().toISOString().slice(0,10);
+  const list = role === 'killer' ? KILLER_PERKS : SURVIVOR_PERKS;
+  return list.filter(p => !p.availableFrom || p.availableFrom <= today);
+}
 
 function toast(msg) {
   const t = document.getElementById('toast');
@@ -432,18 +436,50 @@ document.getElementById('importBtn').addEventListener('click', async () => {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     if (!Array.isArray(data.killer) || !Array.isArray(data.survivor)) throw new Error('Invalid format');
-    KILLER_PERKS = mergeIdentical(data.killer);
-    SURVIVOR_PERKS = mergeIdentical(data.survivor);
+    const oldNames = new Set([...KILLER_PERKS, ...SURVIVOR_PERKS].map(p => p.name));
+    const mergedK = mergeIdentical(data.killer);
+    const mergedS = mergeIdentical(data.survivor);
+    const newPerks = [...mergedK, ...mergedS].filter(p => !oldNames.has(p.name));
+    let availableFrom = null;
+    if (newPerks.length > 0) {
+      const ok = confirm('Found ' + newPerks.length + ' new perk(s):\n' + newPerks.map(p=>p.name).join(', ') + '\n\nAdd them to the pool?');
+      if (ok) {
+        const dateInput = prompt('Enter the date to add them to the pool (YYYY-MM-DD), or leave blank for today:', new Date().toISOString().slice(0,10));
+        if (dateInput === null) { toast('Import cancelled'); return; }
+        availableFrom = (dateInput.trim() || new Date().toISOString().slice(0,10));
+      }
+    }
+    if (availableFrom) {
+      mergedK.forEach(p => { if (!oldNames.has(p.name)) p.availableFrom = availableFrom; });
+      mergedS.forEach(p => { if (!oldNames.has(p.name)) p.availableFrom = availableFrom; });
+    } else if (newPerks.length > 0) {
+      // user declined: drop new perks
+      KILLER_PERKS = KILLER_PERKS; // keep old
+      // filter out new from merged
+      const nk = new Set(newPerks.map(p=>p.name));
+      const fk = mergedK.filter(p => !nk.has(p.name));
+      const fs = mergedS.filter(p => !nk.has(p.name));
+      KILLER_PERKS = fk;
+      SURVIVOR_PERKS = fs;
+      localStorage.setItem('dbd_killer_perks', JSON.stringify(KILLER_PERKS));
+      localStorage.setItem('dbd_survivor_perks', JSON.stringify(SURVIVOR_PERKS));
+      if (data.version) localStorage.setItem('dbd_perks_version', data.version);
+      document.getElementById('poolSize').textContent = pool().length;
+      document.getElementById('allPerks').style.display = 'none';
+      toast('Imported (new perks skipped).');
+      return;
+    }
+    KILLER_PERKS = mergedK;
+    SURVIVOR_PERKS = mergedS;
     localStorage.setItem('dbd_killer_perks', JSON.stringify(KILLER_PERKS));
     localStorage.setItem('dbd_survivor_perks', JSON.stringify(SURVIVOR_PERKS));
     if (data.version) localStorage.setItem('dbd_perks_version', data.version);
     document.getElementById('poolSize').textContent = pool().length;
     document.getElementById('allPerks').style.display = 'none';
     toast('Latest perks imported from GitHub!');
+
   } catch (err) {
-    toast('GitHub fetch failed. Pick a local file instead.');
-    const ok = confirm('Could not fetch from GitHub (' + err.message + ').\n\nSelect a local dbd-perks.json file instead?');
-    if (ok) document.getElementById('fileInput').click();
+    toast('Import failed: ' + err.message);
   }
 });
 document.getElementById('fileInput').addEventListener('change', (e) => {
